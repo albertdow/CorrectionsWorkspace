@@ -542,21 +542,21 @@ wsptools.SafeWrapHist(w, ['expr::m_pt_max100("min(@0,100)",m_pt[0])', 'expr::e_p
 #wsptools.SafeWrapHist(w, ['expr::dR_max4p5("min(@0,4.5)",dR[0])','expr::njets_max1("min(@0,1)",njets[0])'],  GetFromTFile(loc+'/em_qcd/em_aiso_iso_extrap.root:extrap_uncert'), 'em_qcd_extrap_uncert')
 wsptools.SafeWrapHist(w, ['expr::m_pt_max40("min(@0,40)",m_pt[0])','expr::e_pt_max40("min(@0,40)",e_pt[0])'],  GetFromTFile(loc+'/em_qcd/em_qcd_isoextrap.root:isoextrap_uncert'), 'em_qcd_extrap_uncert')
 
-w.factory('expr::em_qcd_0jet("(2.162-0.05135*@0)*@1",dR,em_qcd_factors)')
-w.factory('expr::em_qcd_1jet("(2.789-0.2712*@0)*@1",dR,em_qcd_factors)')
+w.factory('expr::em_qcd_0jet("(2.162-0.05135*@0)*@1*@2",dR,em_qcd_factors,em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_1jet("(2.789-0.2712*@0)*@1*@2",dR,em_qcd_factors,em_qcd_extrap_uncert)')
 
-w.factory('expr::em_qcd_0jet_bothaiso("(3.212-0.2186*@0)*@1",dR,em_qcd_factors_bothaiso)')
-w.factory('expr::em_qcd_1jet_bothaiso("(3.425-0.3629*@0)*@1",dR,em_qcd_factors_bothaiso)')
+w.factory('expr::em_qcd_0jet_bothaiso("(3.212-0.2186*@0)*@1*@2",dR,em_qcd_factors_bothaiso,em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_1jet_bothaiso("(3.425-0.3629*@0)*@1*@2",dR,em_qcd_factors_bothaiso,em_qcd_extrap_uncert)')
 
-w.factory('expr::em_qcd_0jet_shapeup("(2.162-(0.05135-0.0583)*@0)*@1",dR,em_qcd_factors)')
-w.factory('expr::em_qcd_0jet_shapedown("(2.162-(0.05135+0.0583)*@0)*@1",dR,em_qcd_factors)')
-w.factory('expr::em_qcd_1jet_shapeup("(2.789-(0.2712-0.0390)*@0)*@1",dR,em_qcd_factors)')
-w.factory('expr::em_qcd_1jet_shapedown("(2.789-(0.2712+0.0390)*@0)*@1",dR,em_qcd_factors)')
+w.factory('expr::em_qcd_0jet_shapeup(  "(2.162-(0.05135-0.0583)*@0)*@1*@2",dR,em_qcd_factors,em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_0jet_shapedown("(2.162-(0.05135+0.0583)*@0)*@1*@2",dR,em_qcd_factors,em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_1jet_shapeup("(2.789-(0.2712-0.0390)*@0)*@1*@2",dR,em_qcd_factors,em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_1jet_shapedown("(2.789-(0.2712+0.0390)*@0)*@1*@2",dR,em_qcd_factors,em_qcd_extrap_uncert)')
 
-w.factory('expr::em_qcd_0jet_rateup("(2.162+0.192-0.05135*@0)*@1",dR,em_qcd_factors)')
-w.factory('expr::em_qcd_0jet_ratedown("(2.162-0.192-0.05135*@0)*@1",dR,em_qcd_factors)')
-w.factory('expr::em_qcd_1jet_rateup("(2.789+0.0105-0.2712*@0)*@1",dR,em_qcd_factors)')
-w.factory('expr::em_qcd_1jet_ratedown("(2.789-0.0105-0.2712*@0)*@1",dR,em_qcd_factors)')
+w.factory('expr::em_qcd_0jet_rateup("(2.162+0.192-0.05135*@0)*@1*@2",dR,em_qcd_factors,em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_0jet_ratedown("(2.162-0.192-0.05135*@0)*@1*@2",dR,em_qcd_factors,em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_1jet_rateup("(2.789+0.0105-0.2712*@0)*@1*@2",dR,em_qcd_factors,em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_1jet_ratedown("(2.789-0.0105-0.2712*@0)*@1*@2",dR,em_qcd_factors,em_qcd_extrap_uncert)')
 
 wsptools.MakeBinnedCategoryFuncMap(w, 'njets', [0,1,10000],
                                    'em_qcd_osss_binned', ['em_qcd_0jet','em_qcd_1jet'])
@@ -587,7 +587,7 @@ wsptools.MakeBinnedCategoryFuncMap(w, 'njets', [0,1,10000],
                                    'em_qcd_osss_binned_bothaiso', ['em_qcd_0jet_bothaiso','em_qcd_1jet_bothaiso'])
 
 w.factory('expr::em_qcd_extrap_up("@0*@1",em_qcd_osss_binned,em_qcd_extrap_uncert)')
-w.factory('expr::em_qcd_extrap_down("@0*(2-@1)",em_qcd_osss_binned,em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_extrap_down("@0/@1",em_qcd_osss_binned,em_qcd_extrap_uncert)')
 
 w.factory('expr::em_qcd_bothaiso_extrap_up("@0*@1",em_qcd_osss_binned_bothaiso,em_qcd_extrap_uncert)')
 w.factory('expr::em_qcd_bothaiso_extrap_down("@0*(2-@1)",em_qcd_osss_binned_bothaiso,em_qcd_extrap_uncert)')
@@ -853,5 +853,5 @@ for task in histsToWrap:
 w.importClassCode('CrystalBallEfficiency')
 
 w.Print()
-w.writeToFile('htt_scalefactors_v16_5_1.root')
+w.writeToFile('htt_scalefactors_v16_5_2.root')
 w.Delete()

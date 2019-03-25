@@ -59,21 +59,19 @@ w.factory('expr::m_sel_idEmb_ratio("min(1./@0,20)", m_sel_idEmb_data)')
 # trigegr SFs
 
 histsToWrap = [
-    (loc+'2017/SingleMuon/muon_SFs.root:data_id_eff', 'm_id_data'),
-    (loc+'2017/SingleMuon/muon_SFs.root:ZLL_id_eff', 'm_id_mc'),
-    (loc+'2017/SingleMuon/muon_SFs.root:embed_id_eff', 'm_id_embed'),
-    (loc+'2017/SingleMuon/muon_SFs.root:data_iso_eff', 'm_iso_data'),
-    (loc+'2017/SingleMuon/muon_SFs.root:ZLL_iso_eff', 'm_iso_mc'),
-    (loc+'2017/SingleMuon/muon_SFs.root:embed_iso_eff', 'm_iso_embed'),
-    (loc+'2017/SingleMuon/muon_SFs.root:data_trg_eff', 'm_trg_data'),
-    (loc+'2017/SingleMuon/muon_SFs.root:ZLL_trg_eff', 'm_trg_mc'),
-    (loc+'2017/SingleMuon/muon_SFs.root:embed_trg_eff', 'm_trg_embed'),
+    (loc+'2017/SingleLepton/muon_SFs.root:data_id_eff', 'm_id_data'),
+    (loc+'2017/SingleLepton/muon_SFs.root:ZLL_id_eff', 'm_id_mc'),
+    (loc+'2017/SingleLepton/muon_SFs.root:embed_id_eff', 'm_id_embed'),
+    (loc+'2017/SingleLepton/muon_SFs.root:data_iso_eff', 'm_iso_data'),
+    (loc+'2017/SingleLepton/muon_SFs.root:ZLL_iso_eff', 'm_iso_mc'),
+    (loc+'2017/SingleLepton/muon_SFs.root:embed_iso_eff', 'm_iso_embed'),
+    (loc+'2017/SingleLepton/muon_SFs.root:data_trg_eff', 'm_trg_data'),
+    (loc+'2017/SingleLepton/muon_SFs.root:ZLL_trg_eff', 'm_trg_mc'),
+    (loc+'2017/SingleLepton/muon_SFs.root:embed_trg_eff', 'm_trg_embed'),
     (loc+'2017/Mu20/muon20_cross_B/muon_SFs.root:data_trg_eff', 'm_trg20_runB_data'),
-    (loc+'2017/Mu20/muon20_cross_B/muon_SFs.root:ZLL_trg_eff', 'm_trg20_runB_mc'),
-    (loc+'2017/Mu20/muon20_cross_B/muon_SFs.root:embed_trg_eff', 'm_trg20_runB_embed'),
+    (loc+'2017/Mu20/muon20_cross_B/muon_SFs.root:ZLL_trg_eff', 'm_trg20_mc'),
+    (loc+'2017/Mu20/muon20_cross_B/muon_SFs.root:embed_trg_eff', 'm_trg20_embed'),
     (loc+'2017/Mu20/muon20_noB/muon_SFs.root:data_trg_eff', 'm_trg20_runCtoF_data'),
-    (loc+'2017/Mu20/muon20_noB/muon_SFs.root:ZLL_trg_eff', 'm_trg20_runCtoF_mc'),
-    (loc+'2017/Mu20/muon20_noB/muon_SFs.root:embed_trg_eff', 'm_trg20_runCtoF_embed')
 ]
 
 for task in histsToWrap:
@@ -97,8 +95,8 @@ wsptools.MakeBinnedCategoryFuncMap(w, 'm_iso', [0., 0.15, 0.30, 0.50],
 for t in ['data', 'mc', 'embed']:
     w.factory('expr::m_idiso_%s("@0*@1", m_id_%s, m_iso_%s)' % (t, t, t))
     w.factory('expr::m_idiso_binned_%s("@0*@1", m_id_%s, m_iso_binned_%s)' % (t, t, t))
-    w.factory('expr::m_trg20_%s("0.1145*@0+0.8855*@1", m_trg20_runB_%s, m_trg20_runCtoF_%s)' % (t, t, t))
 
+w.factory('expr::m_trg20_data("0.1145*@0+0.8855*@1", m_trg20_runB_data, m_trg20_runCtoF_data)')
 
 
 for t in ['trg', 'trg20', 'trg_binned', 'id', 'iso', 'iso_binned', 'idiso_binned' ]:
@@ -227,18 +225,18 @@ for t in ['trg','trg_binned']:
 loc = 'inputs/ICSF/'
         
 histsToWrap = [
-    (loc+'2017/SingleElectron/electron_SFs.root:data_id_eff', 'e_id_data'),
-    (loc+'2017/SingleElectron/electron_SFs.root:ZLL_id_eff', 'e_id_mc'),
-    (loc+'2017/SingleElectron/electron_SFs.root:embed_id_eff', 'e_id_embed'),
-    (loc+'2017/SingleElectron/electron_SFs.root:data_iso_eff', 'e_iso_data'),
-    (loc+'2017/SingleElectron/electron_SFs.root:ZLL_iso_eff', 'e_iso_mc'),
-    (loc+'2017/SingleElectron/electron_SFs.root:embed_iso_eff', 'e_iso_embed'),
+    (loc+'2017/SingleLepton/electron_SFs.root:data_id_eff', 'e_id_data'),
+    (loc+'2017/SingleLepton/electron_SFs.root:ZLL_id_eff', 'e_id_mc'),
+    (loc+'2017/SingleLepton/electron_SFs.root:embed_id_eff', 'e_id_embed'),
+    (loc+'2017/SingleLepton/electron_SFs.root:data_iso_eff', 'e_iso_data'),
+    (loc+'2017/SingleLepton/electron_SFs.root:ZLL_iso_eff', 'e_iso_mc'),
+    (loc+'2017/SingleLepton/electron_SFs.root:embed_iso_eff', 'e_iso_embed'),
     (loc+'2017/em_lo/aiso/electron_SFs.root:data_iso_eff', 'e_aiso_data'),
     (loc+'2017/em_lo/aiso/electron_SFs.root:ZLL_iso_eff', 'e_aiso_mc'),
     (loc+'2017/em_lo/aiso/electron_SFs.root:embed_iso_eff', 'e_aiso_embed'),
-    (loc+'2017/SingleElectron/electron_SFs.root:data_trg_eff', 'e_trg_data'),
-    (loc+'2017/SingleElectron/electron_SFs.root:ZLL_trg_eff', 'e_trg_mc'),
-    (loc+'2017/SingleElectron/electron_SFs.root:embed_trg_eff', 'e_trg_embed'),
+    (loc+'2017/SingleLepton/electron_SFs.root:data_trg_eff', 'e_trg_data'),
+    (loc+'2017/SingleLepton/electron_SFs.root:ZLL_trg_eff', 'e_trg_mc'),
+    (loc+'2017/SingleLepton/electron_SFs.root:embed_trg_eff', 'e_trg_embed'),
     (loc+'2017/Ele24/electron_SFs.root:data_trg_eff', 'e_trg24_data'),
     (loc+'2017/Ele24/electron_SFs.root:ZLL_trg_eff', 'e_trg24_mc'),
     (loc+'2017/Ele24/electron_SFs.root:embed_trg_eff', 'e_trg24_embed'),
@@ -268,8 +266,8 @@ wsptools.MakeBinnedCategoryFuncMap(w, 'e_iso', [0., 0.15, 0.50],
                                    'e_iso_binned_embed', ['e_iso_embed', 'e_aiso_embed'])
 
 for t in ['data', 'mc']:
-    w.factory('expr::e_idiso_%s("@0*@1", e_id_pog_%s, e_iso_%s)' % (t, t, t))
-    w.factory('expr::e_idiso_binned_%s("@0*@1", e_id_pog_%s, e_iso_binned_%s)' % (t, t, t))
+    w.factory('expr::e_idiso_%s("@0*@1", e_id_%s, e_iso_%s)' % (t, t, t))
+    w.factory('expr::e_idiso_binned_%s("@0*@1", e_id_%s, e_iso_binned_%s)' % (t, t, t))
 w.factory('expr::e_idiso_embed("@0*@1", e_id_embed, e_iso_embed)')
 w.factory('expr::e_idiso_binned_embed("@0*@1", e_id_embed, e_iso_binned_embed)')
 
@@ -287,18 +285,18 @@ wsptools.SafeWrapHist(w, ['expr::m_pt_max100("min(@0,100)",m_pt[0])', 'expr::e_p
 wsptools.SafeWrapHist(w, ['expr::m_pt_max100("min(@0,100)",m_pt[0])', 'expr::e_pt_max100("min(@0,100)",e_pt[0])'],  GetFromTFile(loc+'/em_osss_2017.root:pt_closure_aiso'), 'em_qcd_factors_bothaiso')
 wsptools.SafeWrapHist(w, ['expr::m_pt_max40("min(@0,40)",m_pt[0])','expr::e_pt_max40("min(@0,40)",e_pt[0])'],  GetFromTFile(loc+'/em_osss_2017.root:iso_extrap'), 'em_qcd_extrap_uncert')
 
-w.factory('expr::em_qcd_osss_binned("((@0<0.15)*((@1==0)*(2.505-0.1545*@2) + (@1>0)*(2.896-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.1726*@2) + (@1>0)*(3.398-0.3965*@2))*@4)" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso)')
+w.factory('expr::em_qcd_osss_binned("((@0<0.15)*((@1==0)*(2.505-0.1545*@2) + (@1>0)*(2.896-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.1726*@2) + (@1>0)*(3.398-0.3965*@2))*@4)*@5" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso, em_qcd_extrap_uncert)')
 
-w.factory('expr::em_qcd_osss_0jet_rateup("((@0<0.15)*((@1==0)*(2.660-0.1545*@2) + (@1>0)*(2.896-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.173-0.1726*@2) + (@1>0)*(3.398-0.3965*@2))*@4)" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso)')
-w.factory('expr::em_qcd_osss_0jet_ratedown("((@0<0.15)*((@1==0)*(2.350-0.1545*@2) + (@1>0)*(2.896-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(2.923-0.1726*@2) + (@1>0)*(3.398-0.3965*@2))*@4)" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso)')
-w.factory('expr::em_qcd_osss_0jet_shapeup  ("((@0<0.15)*((@1==0)*(2.505-0.1075*@2) + (@1>0)*(2.896-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.2110*@2) + (@1>0)*(3.398-0.3965*@2))*@4)" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso)')
-w.factory('expr::em_qcd_osss_0jet_shapedown("((@0<0.15)*((@1==0)*(2.505-0.2015*@2) + (@1>0)*(2.896-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.2110*@2) + (@1>0)*(3.398-0.3965*@2))*@4)" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso)')
+w.factory('expr::em_qcd_osss_0jet_rateup("((@0<0.15)*((@1==0)*(2.660-0.1545*@2) + (@1>0)*(2.896-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.173-0.1726*@2) + (@1>0)*(3.398-0.3965*@2))*@4)*@5" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso, em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_osss_0jet_ratedown("((@0<0.15)*((@1==0)*(2.350-0.1545*@2) + (@1>0)*(2.896-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(2.923-0.1726*@2) + (@1>0)*(3.398-0.3965*@2))*@4)*@5" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso, em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_osss_0jet_shapeup  ("((@0<0.15)*((@1==0)*(2.505-0.1075*@2) + (@1>0)*(2.896-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.2110*@2) + (@1>0)*(3.398-0.3965*@2))*@4)*@5" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso, em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_osss_0jet_shapedown("((@0<0.15)*((@1==0)*(2.505-0.2015*@2) + (@1>0)*(2.896-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.2110*@2) + (@1>0)*(3.398-0.3965*@2))*@4)*@5" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso, em_qcd_extrap_uncert)')
 
 
-w.factory('expr::em_qcd_osss_1jet_rateup("((@0<0.15)*((@1==0)*(2.505-0.1545*@2) + (@1>0)*(2.978-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.1726*@2) + (@1>0)*(3.459-0.3965*@2))*@4)" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso)')
-w.factory('expr::em_qcd_osss_1jet_ratedown("((@0<0.15)*((@1==0)*(2.505-0.1545*@2) + (@1>0)*(2.814-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.1726*@2) + (@1>0)*(3.337-0.3965*@2))*@4)" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso)')
-w.factory('expr::em_qcd_osss_1jet_shapeup("((@0<0.15)*((@1==0)*(2.505-0.1545*@2) + (@1>0)*(2.896-0.3019*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.1726*@2) + (@1>0)*(3.398-0.3753*@2))*@4)" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso)')
-w.factory('expr::em_qcd_osss_1jet_shapedown("((@0<0.15)*((@1==0)*(2.505-0.1545*@2) + (@1>0)*(2.896-0.3589*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.1726*@2) + (@1>0)*(3.398-0.4177*@2))*@4)" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso)')
+w.factory('expr::em_qcd_osss_1jet_rateup("((@0<0.15)*((@1==0)*(2.505-0.1545*@2) + (@1>0)*(2.978-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.1726*@2) + (@1>0)*(3.459-0.3965*@2))*@4)*@5" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso, em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_osss_1jet_ratedown("((@0<0.15)*((@1==0)*(2.505-0.1545*@2) + (@1>0)*(2.814-0.3304*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.1726*@2) + (@1>0)*(3.337-0.3965*@2))*@4)*@5" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso, em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_osss_1jet_shapeup("((@0<0.15)*((@1==0)*(2.505-0.1545*@2) + (@1>0)*(2.896-0.3019*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.1726*@2) + (@1>0)*(3.398-0.3753*@2))*@4)*@5" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso, em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_osss_1jet_shapedown("((@0<0.15)*((@1==0)*(2.505-0.1545*@2) + (@1>0)*(2.896-0.3589*@2))*@3 + (@0>=0.15)*((@1==0)*(3.048-0.1726*@2) + (@1>0)*(3.398-0.4177*@2))*@4)*@5" ,iso[0],njets[0],dR[0],em_qcd_factors,em_qcd_factors_bothaiso, em_qcd_extrap_uncert)')
 
 
 wsptools.MakeBinnedCategoryFuncMap(w, 'njets', [0,1,10000],
@@ -315,7 +313,7 @@ wsptools.MakeBinnedCategoryFuncMap(w, 'njets', [0,1,10000],
 
 
 w.factory('expr::em_qcd_extrap_up("@0*@1",em_qcd_osss_binned,em_qcd_extrap_uncert)')
-w.factory('expr::em_qcd_extrap_down("@0*(2-@1)",em_qcd_osss_binned,em_qcd_extrap_uncert)')
+w.factory('expr::em_qcd_extrap_down("@0/@1",em_qcd_osss_binned,em_qcd_extrap_uncert)')
 
 
 ### Muon tracking efficiency scale factor from the muon POG
@@ -549,5 +547,5 @@ for task in histsToWrap:
 
 
 w.Print()
-w.writeToFile('htt_scalefactors_2017_v1.root')
+w.writeToFile('htt_scalefactors_2017_v3.root')
 w.Delete()
